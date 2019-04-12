@@ -170,31 +170,31 @@ mlp_history = []
 mlp_info = []
 data_acquisition_preprocessing()
 # print(target)
-kfold_result = ""
-for reg_index in range(0, 3):
-    # for i in np.nditer(generate_penalty_range()):
-    kfold_result += kfold_mlp(5, 2, 10, l1=0.1, l2=0.1,
-                                regularizer=reg_index+1, epoch=200)
-    kfold_result += "----------------------------------------------------------\n"
+# kfold_result = ""
+# for reg_index in range(0, 3):
+#     # for i in np.nditer(generate_penalty_range()):
+#     kfold_result += kfold_mlp(5, 2, 10, l1=0.1, l2=0.1,
+#                                 regularizer=reg_index+1, epoch=200)
+#     kfold_result += "----------------------------------------------------------\n"
 
-print(kfold_result)
+# print(kfold_result)
 
 # for i in np.nditer(generate_penalty_range()):
-# for reg_index in range(0, 3):
-#     run_relu_mlp_model_standard_split(validation_size=0.3, no_hidden_layer=2,
-#                                     no_neuron=10, l1=0.1, l2=0.1, regularizer=reg_index+1, epoch=500, bat_size=5000)
-# for index in range(0,len(mlp_history),3):
-#     plt.plot(mlp_history[index].history['loss'])
-#     plt.plot(mlp_history[index].history['val_loss'])
-#     plt.plot(mlp_history[index+1].history['loss'])
-#     plt.plot(mlp_history[index+1].history['val_loss'])
-#     plt.plot(mlp_history[index+2].history['loss'])
-#     plt.plot(mlp_history[index+2].history['val_loss'])
-#     plt.title(mlp_info[index])
-#     plt.ylabel('Loss')
-#     plt.xlabel('Epoch')
-#     plt.legend(['Train-L1', 'Validation-L1','Train-L2', 'Validation-L2','Train-L1+L2', 'Validation-L1+L2'], loc='upper left')
-#     plt.show()
+for reg_index in range(0, 3):
+    run_relu_mlp_model_standard_split(validation_size=0.3, no_hidden_layer=2,
+                                    no_neuron=10, l1=0.1, l2=0.1, regularizer=reg_index+1, epoch=500, bat_size=5000)
+for index in range(0,len(mlp_history),3):
+    plt.plot(mlp_history[index].history['loss'])
+    plt.plot(mlp_history[index].history['val_loss'])
+    plt.plot(mlp_history[index+1].history['loss'])
+    plt.plot(mlp_history[index+1].history['val_loss'])
+    plt.plot(mlp_history[index+2].history['loss'])
+    plt.plot(mlp_history[index+2].history['val_loss'])
+    plt.title(mlp_info[index])
+    plt.ylabel('Loss')
+    plt.xlabel('Epoch')
+    plt.legend(['Train-L1', 'Validation-L1','Train-L2', 'Validation-L2','Train-L1+L2', 'Validation-L1+L2'], loc='upper left')
+    plt.show()
     
 
 
